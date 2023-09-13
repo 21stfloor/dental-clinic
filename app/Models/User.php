@@ -64,4 +64,9 @@ class User extends Authenticatable
         }
         return null;
     }
+
+    // public function hasRole($role)
+    // {
+    //     return $this->role === $role;
+    // }
 }

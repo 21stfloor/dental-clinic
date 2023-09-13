@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Patient\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,30 @@ Route::get('/services', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+// routes/web.php
+
+Route::middleware(['auth', 'web', 'verified'])->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admins.dashboard');
+    });
+
+    Route::middleware(['role:patient'])->group(function () {
+        Route::get('/patient/dashboard', [PatientController::class, 'index'])->name('patients.dashboard');
+    });
+
+    Route::middleware(['role:doctor'])->group(function () {
+        Route::get('/doctor/dashboard', 'DoctorController@index')->name('doctors.dashboard');
+    });
+});
+
+
 require __DIR__ . '/admin/admin.php';
 require __DIR__ . '/auth/auth.php';
 require __DIR__ . '/patient/patient.php';
 require __DIR__ . '/doctor/doctor.php';
+
 

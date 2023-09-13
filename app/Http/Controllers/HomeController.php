@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -22,8 +23,18 @@ class HomeController extends Controller
      *
      * @return RedirectResponse
      */
+    // app/Http/Controllers/HomeController.php
+
     public function index()
     {
+        $rolePatient = Role::where('name', 'patient')->first();
+        $roleAdmin = Role::where('name', 'admin')->first();
+        $roleDoctor = Role::where('name', 'doctor')->first();
+
+        $roles = Auth::user()->roles;
+
+        echo ''.$roles;
+
         if (Auth::user()->hasRole('admin')) {
             return redirect()->route('admins.dashboard');
         } elseif (Auth::user()->hasRole('patient')) {
@@ -32,6 +43,12 @@ class HomeController extends Controller
             return redirect()->route('doctors.dashboard');
         }
 
+        if (Auth::check()) {
+            echo "The user is logged in...";
+            // The user is logged in...
+        }
+
         abort(403, 'Unauthorized action.');
     }
+
 }
