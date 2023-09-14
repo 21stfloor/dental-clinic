@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title', 'Pulp Dental Clinic | Patients')
+@section('title', 'Smile Pro HQ | Patients')
 
 @section('content')
     <h1 class="my-4 text-primary">Patients</h1>

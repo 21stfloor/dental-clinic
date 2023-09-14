@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title', 'Pulp Dental Clinic | Profile')
+@section('title', 'Smile Pro HQ | Profile')
 
 @section('content')
     <h1 class="mt-4 text-primary">Profile</h1>
@@ -8,7 +8,7 @@
         <div class="col-lg-4">
             <div class="card mb-3">
                 <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
-                        src="{{ asset('images/pulp.png') }}" width="160" height="160" />
+                        src="{{ asset('images/logo.png') }}" width="160" height="160" />
                     <div class="mb-3">
                         <button class="btn btn-primary btn-sm" type="button">Change Photo</button>
                     </div>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title', 'Pulp Dental Clinic | Schedule')
+@section('title', 'Smile Pro HQ | Schedule')
 
 @section('content')
     <h1 class="my-4 text-primary">Schedule Management</h1>

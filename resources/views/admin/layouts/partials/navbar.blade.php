@@ -1,6 +1,6 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
     <a class="navbar-brand ps-3" href="{{ route('home') }}">
-        <img src="{{ asset('images/pulp-light.png') }}" alt="logo" height="32"> Pulp Dental Clinic</a>
+        <img src="{{ asset('images/logo-light.png') }}" alt="logo" height="32"> Smile Pro HQ</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
         <i class="bi bi-list fs-5"></i>
     </button>

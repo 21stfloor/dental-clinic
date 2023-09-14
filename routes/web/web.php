@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Patient\PatientController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,7 @@ Route::get('/', function () {
     return view('pages.index');
 })->middleware('guest');
 
-Route::get('/services', function () {
-    return view('pages.services');
-})->middleware('guest');
+Route::get('/services', [ServiceController::class, 'index'])->middleware('guest');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

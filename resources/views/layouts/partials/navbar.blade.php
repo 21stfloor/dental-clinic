@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm" id="navbar">
     <div class="container">
         <a class="navbar-brand text-primary fw-bold" href="/">
-            <img src="{{ asset('images/pulp.png') }}" alt="logo" height="32">
-            Pulp Dental Clinic
+            <img src="{{ asset('images/logo.png') }}" alt="logo" height="32">
+            Smile Pro HQ
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

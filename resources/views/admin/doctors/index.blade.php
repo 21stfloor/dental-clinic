@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title', 'Pulp Dental Clinic | Doctors')
+@section('title', 'Smile Pro HQ | Doctors')
 
 @section('content')
     <h1 class="my-4 text-primary">Doctors</h1>
@@ -558,34 +558,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#addDoctorModal2">
-                        Add Doctor
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="addDoctorModal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="addDoctorModal2Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-primary" id="addDoctorModal2Label">Confirm Add Doctor</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to add doctor?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" form="addDoctorForm">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+
 
 @push('scripts')
     <script>
@@ -598,4 +578,10 @@
             modal.find('#delete-form').attr('action', action)
         })
     </script>
+
+    @if ($errors->any())
+    <script>
+
+    </script>
+    @endif
 @endpush

@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbarTransparent">
     <div class="container">
         <a class="navbar-brand fw-bold" href="/" id="navbar-brand">
-            <img src="{{ asset('images/pulp-light.png') }}" alt="logo" height="32" id="navbar-brand-img-top">
-            <img src="{{ asset('images/pulp.png') }}" alt="logo" height="32" id="navbar-brand-img-scroll">
-            Pulp Dental Clinic
+            <img src="{{ asset('images/logo-light.png') }}" alt="logo" height="32" id="navbar-brand-img-top">
+            <img src="{{ asset('images/logo.png') }}" alt="logo" height="32" id="navbar-brand-img-scroll">
+            Smile Pro HQ
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

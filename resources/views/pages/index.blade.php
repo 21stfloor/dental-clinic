@@ -1,6 +1,6 @@
 @extends('layouts.home-master')
 
-@section('title', 'Pulp Dental Clinic | Home')
+@section('title', 'Smile Pro HQ | Home')
 
 @section('navbar')
     @include('layouts.partials.navbar-transparent')
@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="text-light">
                     <h2 class="fw-bold lh-1 mb-3">Welcome to</h2>
-                    <h1 class="display-1 fw-bold lh-1 mb-3">Pulp Dental Clinic</h1>
+                    <h1 class="display-1 fw-bold lh-1 mb-3">Smile Pro HQ</h1>
                     <h2 class="fw-bold lh-1 mb-3">Your Trusted Dental Care Provider!</h2>
                 </div>
             </div>
@@ -29,7 +29,7 @@
             </div>
             <div class="col-lg-6">
                 <h3 class="display-5 fw-bold lh-1 mb-3 text-primary">Hello! This is</h3>
-                <h2 class="mb-4 display-3 fw-bold lh-1 mb-3 text-primary">PULP Dental Clinic</h2>
+                <h2 class="mb-4 display-3 fw-bold lh-1 mb-3 text-primary">Smile Pro HQ</h2>
                 <p class="lead">
                     Our Liberty dentist office was built for people of all ages and celebrates the joy of a happy,
                     healthy
@@ -159,7 +159,7 @@
                     <h3 class="fw-bold lh-1 mb-3 text-primary">249 Yakal St. 8th Avenue</h3>
                     <h3 class="fw-bold lh-1 mb-3 text-primary">Caloocan City</h3>
                     <p class="lead mb-3">
-                        PULP Dental Clinic is conveniently located right off of Yakal Street. Enjoy our spa-like
+                        Smile Pro HQ is conveniently located right off of Yakal Street. Enjoy our spa-like
                         atmosphere
                         and
                         family-friendly approach. We look forward to seeing you!
@@ -178,7 +178,7 @@
                 <div class="col-10 col-sm-8 col-lg-6">
                     <h2 class="mb-4 display-3 fw-bold lh-1 mb-3">Phone</h2>
                     <p class="lead mb-3">
-                        Thank you for your interest in Pulp Dental Clinic. Please use the following contact information
+                        Thank you for your interest in Smile Pro HQ. Please use the following contact information
                         to
                         get in touch with us:
                     </p>
@@ -190,7 +190,7 @@
                     <p class="lead mb-3">Please note that these operating hours may be subject to change during holidays
                         or
                         special events. We recommend calling ahead to confirm our availability and schedule your
-                        appointment. Thank you for choosing Pulp Dental Clinic.</p>
+                        appointment. Thank you for choosing Smile Pro HQ.</p>
                     <ul class="list-group list-group-horizontal-md">
                         <li class="list-group-item lead">Monday: 10:00 AM - 6:00 PM</li>
                         <li class="list-group-item lead">Tuesday: 10:00 AM - 6:00 PM</li>
