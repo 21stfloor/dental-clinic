@@ -55,9 +55,13 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $("#dataTables").DataTable();
+    let table = $("#dataTables");
+    if(table.length == 0) return;
+    table.DataTable();
 });
 
 $(document).ready(function () {
-    $("#rolePermission").DataTable();
+    let table = $("#rolePermission");
+    if(table.length == 0) return;
+    table.DataTable();
 });

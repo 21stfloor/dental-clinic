@@ -125,19 +125,19 @@
                             <form>
                                 <div class="mb-3"><label class="form-label"
                                         for="address"><strong>Address</strong></label><input id="address"
-                                        class="form-control" type="text" placeholder="Sunset Blvd, 38"
+                                        class="form-control" type="text" placeholder="Unit 9. Paseo de Carmona"
                                         name="address" /></div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label"
                                                 for="city"><strong>City</strong></label><input id="city"
-                                                class="form-control" type="text" placeholder="Los Angeles"
+                                                class="form-control" type="text" placeholder="Carmona"
                                                 name="city" /></div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label"
                                                 for="country"><strong>Country</strong></label><input id="country"
-                                                class="form-control" type="text" placeholder="USA" name="country" />
+                                                class="form-control" type="text" placeholder="Philippines" name="country" />
                                         </div>
                                     </div>
                                 </div>

@@ -23,25 +23,19 @@
 
     <section class="container col-xxl-12 px-4 py-5 mb-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="{{ asset('images/clinic_pic.jpg') }}" class="img-fluid rounded shadow"
-                     alt="A picture of a dentist treating a patient" width="500">
+            <div class="col-10 col-sm-8 col-lg-6">       
+            <div class="ratio ratio-16x9">         
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fdocalvindc%2Fvideos%2F654242692610649%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>                
+            </div>
             </div>
             <div class="col-lg-6">
                 <h3 class="display-5 fw-bold lh-1 mb-3 text-primary">Hello! This is</h3>
                 <h2 class="mb-4 display-3 fw-bold lh-1 mb-3 text-primary">Smile Pro HQ</h2>
                 <p class="lead">
-                    Our Liberty dentist office was built for people of all ages and celebrates the joy of a happy,
-                    healthy
-                    smile. We combine cutting-edge dentistry with a team who treats you like family, a relaxing
-                    environment,
-                    and amenities that delight. Enjoy personalized appointments and all-encompassing dental care
-                    from
-                    top-rated
-                    professionals.
+                    Smile HQ
                 </p>
                 <p class="lead">
-                    Everything you need, plus a little extra.
+                    Smile HQ
                 </p>
             </div>
         </div>
@@ -129,10 +123,10 @@
                             <div id="collapseFour" class="accordion-collapse collapse"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p class="lead">Led by Dr. Raul Arganza, our team is proud to offer a fresh take on
+                                    <p class="lead">Led by Dr. Alvin V. Reate, our team is proud to offer a fresh take on
                                         going to
                                         the dentist in
-                                        Liberty.
+                                        Carmona, Philippines
                                     </p>
                                 </div>
                             </div>
@@ -148,24 +142,19 @@
             <h2 class="display-3 pb-2 text-center text-primary fw-bold lh-1 mb-3">Contact Us</h2>
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-10 col-sm-8 col-lg-6">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d482.5171857146846!2d120.97749234328602!3d14.648135961354658!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5d216479c83%3A0x88363864dfa38a05!2sDr.%20Raul%20C.%20Arganza!5e0!3m2!1sen!2sph!4v1678076673814!5m2!1sen!2sph"
-                        width="613" height="450" style="border:0;" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade" class="ratio ratio-1x1 rounded shadow"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.76898599715!2d121.06009126969214!3d14.324847153139324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d7b54d0dec27%3A0xae573fe8df627358!2sSmileProHQ%20by%20Dr.%20Alvin%20V.%20Reate!5e0!3m2!1sen!2sph!4v1694718472882!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    class="ratio ratio-1x1 rounded shadow"></iframe>
                 </div>
 
                 <div class="col-lg-6">
                     <h2 class="mb-4 display-3 fw-bold lh-1 mb-3 text-primary">Location</h2>
-                    <h3 class="fw-bold lh-1 mb-3 text-primary">249 Yakal St. 8th Avenue</h3>
-                    <h3 class="fw-bold lh-1 mb-3 text-primary">Caloocan City</h3>
+                    <h3 class="fw-bold lh-1 mb-3 text-primary">Unit 9. Paseo de Carmona</h3>
+                    <h3 class="fw-bold lh-1 mb-3 text-primary">Carmona, Philippines, 4116</h3>
                     <p class="lead mb-3">
-                        Smile Pro HQ is conveniently located right off of Yakal Street. Enjoy our spa-like
-                        atmosphere
-                        and
-                        family-friendly approach. We look forward to seeing you!
+                        Smile Pro HQ...
                     </p>
                     <p class="lead mb-3">
-                        Everything you need, plus a little extra.
+                    Smile Pro HQ...
                     </p>
                 </div>
             </div>
@@ -182,8 +171,8 @@
                         to
                         get in touch with us:
                     </p>
-                    <h3 class="fw-bold lh-1 mb-3"><i class="bi bi-phone-fill me-3"></i>+639 2744 84584</h3>
-                    <h3 class="fw-bold lh-1 mb-3"><i class="bi bi-telephone-fill me-3"></i>3660878</h3>
+                    <a href="tel:+639173185385" class="text-white"><h3 class="fw-bold lh-1 mb-3"><i class="bi bi-phone-fill me-3"></i>+63917 318 5385</h3></a>
+                    <a href="mailto:alvindmd@gmail.com" class="text-white"><h3 class="fw-bold lh-1 mb-3"><i class="bi bi-envelope-fill me-3"></i>alvindmd@gmail.com</h3></a>
                 </div>
                 <div class="col-lg-6">
                     <h2 class="mb-4 display-3 fw-bold lh-1 mb-3">Hours</h2>
@@ -192,15 +181,14 @@
                         special events. We recommend calling ahead to confirm our availability and schedule your
                         appointment. Thank you for choosing Smile Pro HQ.</p>
                     <ul class="list-group list-group-horizontal-md">
-                        <li class="list-group-item lead">Monday: 10:00 AM - 6:00 PM</li>
-                        <li class="list-group-item lead">Tuesday: 10:00 AM - 6:00 PM</li>
-                        <li class="list-group-item lead">Thursday: 10:00 AM - 6:00 PM</li>
-                        <li class="list-group-item lead">Sunday: 10:00 AM - 6:00 PM</li>
+                        <li class="list-group-item lead">Mon - Fri: 9am - 6pm</li>
+                        <li class="list-group-item lead">Sat: 10am - 2pm</li>
+                        <li class="list-group-item lead">Sun: Closed</li>
                     </ul>
                 </div>
             </div>
         </section>
-    </div>
+    
 @endsection
 
 @section('footer')

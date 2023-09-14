@@ -20,12 +20,29 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Role::create(['guard_name' => 'web', 'name' => 'admin']);
-        Role::create(['guard_name' => 'web', 'name' => 'patient']);
-        Role::create(['guard_name' => 'web', 'name' => 'doctor']);
-        $user = User::factory()->create();
+        Role::firstOrCreate(['guard_name' => 'web', 'name' => 'admin']);
+        Role::firstOrCreate(['guard_name' => 'web', 'name' => 'patient']);
+        Role::firstOrCreate(['guard_name' => 'web', 'name' => 'doctor']);
+        $adminUser = User::factory()->create([
+            'username' => 'admin1',
+            'email' => 'admin1@email.com'
+        ]);
         
-        $user->assignRole('admin');
+        $adminUser->assignRole('admin');
+
+        $doctorUser = User::factory()->create([
+            'username' => 'doctor1',
+            'email' => 'doctor1@email.com'
+        ]);
+
+        $doctorUser->assignRole('doctor');
+
+        $patientUser = User::factory()->create([
+            'username' => 'patient1',
+            'email' => 'patien1@email.com'
+        ]);
+
+        $patientUser->assignRole('patient');
 
     }
 }
