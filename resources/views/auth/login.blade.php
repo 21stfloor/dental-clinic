@@ -5,7 +5,7 @@
         body {
             padding-top: 80px
         }
-    </style>
+    </style>    
 @endsection
 
 @section('navbar')
@@ -19,7 +19,7 @@
         <div class="row align-items-center g-lg-5 py-5">
             <div class="col-lg-7 text-center text-lg-start">
                 <h1 class="display-4 fw-bold lh-1 mb-3 text-primary">{{ __('Login') }}</h1>
-                <img src="{{ asset('images/undraw_login_re_4vu2.svg') }}" alt="" class="img-fluid mb-3" width="450">
+                <img src="{{ asset('images/front_door.jpg') }}" alt="" class="img-fluid mb-3" width="450">
                 <p class="col-lg-10 lead text-primary">
                     Please log in to schedule or manage your dental appointments with our expert team of dentists.
                 </p>
@@ -79,3 +79,4 @@
 @section('footer')
     @include('layouts.partials.footer')
 @endsection
+

@@ -6,6 +6,7 @@
             padding-top: 80px
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 
 @section('navbar')
@@ -19,7 +20,7 @@
         <div class="row align-items-center g-lg-5">
             <div class="col-lg-5 text-center text-lg-start">
                 <h1 class="display-4 fw-bold lh-1 mb-3 text-primary">Register</h1>
-                <img src="{{ asset('images/undraw_sign__up_nm4k.svg') }}" alt="" class="img-fluid mb-3" width="450">
+                <img src="{{ asset('images/front_door.jpg') }}" alt="" class="img-fluid mb-3" width="450">
                 <p class="col-lg-10 lead text-primary">Please fill out the form below to book your appointment with our
                     skilled and experienced dental team.</p>
             </div>
@@ -117,8 +118,6 @@
                                     <option selected disabled>Select Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
-                                    <option value="nonbinary">Non-binary</option>
-                                    <option value="transgender">Transgender</option>
                                 </select>
 
                                 @error('gender')
@@ -199,4 +198,24 @@
 
 @section('footer')
     @include('layouts.partials.footer')
+@endsection
+
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        $(document).ready(function () {
+            let config = {
+                "disable": [
+                    function(date) {
+                        // return true to disable
+                        let now = new Date();
+                        let difference =  now.getYear() - date.getYear()
+                        return (difference < 7);//7 years old is minimum age
+                    }
+                ],
+            }
+            $("input[type='date']").flatpickr(config);
+        });
+    </script>
 @endsection

@@ -32,10 +32,7 @@
                 <h3 class="display-5 fw-bold lh-1 mb-3 text-primary">Hello! This is</h3>
                 <h2 class="mb-4 display-3 fw-bold lh-1 mb-3 text-primary">Smile Pro HQ</h2>
                 <p class="lead">
-                    Smile HQ
-                </p>
-                <p class="lead">
-                    Smile HQ
+                Quality Dental Care You Can Trusts
                 </p>
             </div>
         </div>
@@ -151,10 +148,7 @@
                     <h3 class="fw-bold lh-1 mb-3 text-primary">Unit 9. Paseo de Carmona</h3>
                     <h3 class="fw-bold lh-1 mb-3 text-primary">Carmona, Philippines, 4116</h3>
                     <p class="lead mb-3">
-                        Smile Pro HQ...
-                    </p>
-                    <p class="lead mb-3">
-                    Smile Pro HQ...
+                        We offer TMJ treat ment and smile rehabilitation
                     </p>
                 </div>
             </div>
@@ -181,9 +175,9 @@
                         special events. We recommend calling ahead to confirm our availability and schedule your
                         appointment. Thank you for choosing Smile Pro HQ.</p>
                     <ul class="list-group list-group-horizontal-md">
-                        <li class="list-group-item lead">Mon - Fri: 9am - 6pm</li>
-                        <li class="list-group-item lead">Sat: 10am - 2pm</li>
-                        <li class="list-group-item lead">Sun: Closed</li>
+                        <li class="list-group-item lead">Mon - Fri: <br>9am - 6pm</li>
+                        <li class="list-group-item lead">Sat: 10am - <br>2pm</li>
+                        <li class="list-group-item lead">Sun: <br>Closed</li>
                     </ul>
                 </div>
             </div>
