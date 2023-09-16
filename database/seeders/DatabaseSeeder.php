@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -27,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin1',
             'email' => 'admin1@email.com'
         ]);
-        
+
         $adminUser->assignRole('admin');
 
         $doctorUser = User::factory()->create([
@@ -37,12 +39,20 @@ class DatabaseSeeder extends Seeder
 
         $doctorUser->assignRole('doctor');
 
+        Doctor::factory()->create([
+            'user_id' => $doctorUser->id
+        ]);
+
         $patientUser = User::factory()->create([
             'username' => 'patient1',
             'email' => 'patien1@email.com'
         ]);
 
         $patientUser->assignRole('patient');
+
+        Patient::factory()->create([
+            'user_id' => $patientUser->id,
+        ]);
 
     }
 }
