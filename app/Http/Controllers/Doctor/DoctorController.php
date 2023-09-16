@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Doctor;
 
 use App\Models\Appointment;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
-use App\Models\Schedule;
+use App\Models\Doctor;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -20,6 +20,15 @@ class DoctorController extends Controller
 
     public function profile(): Response
     {
-        return response(view('doctor.profile'));
+        $doctor = Auth::user();
+
+        if (!Auth::check()) {
+            return response()->json([ 'error' => 'UnAuthorized.'], 401);
+        }
+
+        $username = Auth::user()->username;
+        $doctorProfile = Doctor::where('user_id', $doctor->id)->first();
+
+        return response(view('doctor.profile', compact('doctor', 'doctorProfile')));
     }
 }

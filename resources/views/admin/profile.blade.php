@@ -90,25 +90,25 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label"
                                                 for="username"><strong>Username</strong></label><input id="username"
-                                                class="form-control" type="text" placeholder="user.name"
+                                                class="form-control" type="text" value="{{ $admin->username }}" placeholder="user.name"
                                                 name="username" /></div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="email"><strong>Email
                                                     Address</strong></label><input id="email" class="form-control"
-                                                type="email" placeholder="user@example.com" name="email" /></div>
+                                                type="email" value="{{ $admin->email }}" placeholder="user@example.com" name="email" /></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="first_name"><strong>First
                                                     Name</strong></label><input id="first_name" class="form-control"
-                                                type="text" placeholder="John" name="first_name" /></div>
+                                                type="text" value="{{ $admin->first_name }}" placeholder="John" name="first_name" /></div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Last
                                                     Name</strong></label><input id="last_name" class="form-control"
-                                                type="text" placeholder="Doe" name="last_name" /></div>
+                                                type="text" value="{{ $admin->last_name }}" placeholder="Doe" name="last_name" /></div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -125,7 +125,7 @@
                             <form>
                                 <div class="mb-3"><label class="form-label"
                                         for="address"><strong>Address</strong></label><input id="address"
-                                        class="form-control" type="text" placeholder="Unit 9. Paseo de Carmona"
+                                        class="form-control" type="text" value="{{ $admin->address }}" placeholder="Unit 9. Paseo de Carmona"
                                         name="address" /></div>
                                 <div class="row">
                                     <div class="col">
