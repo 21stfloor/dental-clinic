@@ -9,6 +9,12 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use App\Rules\StartTimeNotLessThanEndTime;
+
+
+use function Laravel\Prompts\alert;
 
 class ScheduleController extends Controller
 {
@@ -33,22 +39,28 @@ class ScheduleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
-        $validatedData = request()->validate([
-            'date' => 'required|date',
+        $validator = Validator::make($request->all(), [
+            'day' => ['required', 'date', 'allowed_day'],
             'start_time' => 'required',
-            'end_time' => 'required',
+            'end_time' => ['required', new StartTimeNotLessThanEndTime],
         ]);
 
+        if ($validator->fails()) {
+            return back()
+                ->withErrors(['day' => 'Invalid.'])
+                ->withInput();
+        }
+        
         Auth::user()->doctor->schedules()->create([
-            'date' => $validatedData['date'],
-            'day' => Carbon::parse($validatedData['date'])->format('l'),
-            'start_time' => $validatedData['start_time'],
-            'end_time' => $validatedData['end_time'],
+            'day' => Carbon::parse($request['day'])->format('l'),
+            'start_time' => $request['start_time'],
+            'end_time' => $request['end_time'],
             'status' => 'active',
         ]);
 
+        // If validation passes, continue with your logic here
         return redirect()->route('doctors.schedules.index')->with('success', 'Schedule created successfully.');
     }
 

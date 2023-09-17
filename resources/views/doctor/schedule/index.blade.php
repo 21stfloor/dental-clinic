@@ -8,9 +8,15 @@
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @elseif(session('info'))
+    @elseif (session('info'))
         <div class="alert alert-info">
             {{ session('info') }}
+        </div>
+    @endif
+
+    @if ($errors->has('day'))
+        <div class="alert alert-danger">
+            {{ $errors->first('day') }}
         </div>
     @endif
 
@@ -26,7 +32,6 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Date</th>
                                     <th>Day</th>
                                     <th>Start</th>
                                     <th>End</th>
@@ -37,7 +42,6 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Date</th>
                                     <th>Day</th>
                                     <th>Start</th>
                                     <th>End</th>
@@ -49,7 +53,6 @@
                                 @foreach ($schedules as $schedule)
                                     <tr>
                                         <td>{{ $schedule->id }}</td>
-                                        <td>{{ $schedule->formatted_date }}</td>
                                         <td>{{ $schedule->day }}</td>
                                         <td>{{ $schedule->formatted_start_time }}</td>
                                         <td>{{ $schedule->formatted_end_time }}</td>
@@ -100,14 +103,6 @@
 
                                                                     <div class="row">
                                                                         <div class="col">
-                                                                            <div class="mb-3">
-                                                                                <label for="date"
-                                                                                    class="form-label">Schedule Date</label>
-                                                                                <input type="date" name="date"
-                                                                                    id="date" class="form-control"
-                                                                                    value="{{ $schedule->date }}">
-                                                                            </div>
-
                                                                             <div class="mb-3">
                                                                                 <label for="start_time"
                                                                                     class="form-label">Start Time</label>
@@ -225,17 +220,17 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Schedule Date</label>
-                                    <input type="date" name="date" id="" class="form-control">
+                                    <input type="date" name="day" id="" class="form-control" hidden>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Start Time</label>
-                                    <input type="time" name="start_time" id="" class="form-control">
+                                    <input type="time" name="start_time" id="start_time" class="form-control" value="08:00" hidden>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">End Time</label>
-                                    <input type="time" name="end_time" id="" class="form-control">
+                                    <input type="time" name="end_time" id="end_time" value="17:00" class="form-control" hidden>
                                 </div>
                             </div>
                         </div>
@@ -276,6 +271,33 @@
 @endsection
 
 @push('scripts')
+    <script>
+        $(document).ready(function(){
+            let config = {
+                "disable": [
+                // Disable weekends
+                    function(date) {
+                        return (date.getDay() === 0);
+                    },
+                ],
+                inline: true
+            }
+
+            $('input[type="date"]').flatpickr(config)
+            
+            let startTimeConfig = {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                minTime: "08:00",
+                maxTime: "17:00",
+                inline: true,
+            }
+            
+            $('input[type="time"]').flatpickr(startTimeConfig)
+            
+        });
+    </script>
     <script>
         $('#confirm-delete-modal').on('show.bs.modal', function(event) {
             let button = $(event.relatedTarget)
