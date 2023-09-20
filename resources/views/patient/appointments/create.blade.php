@@ -5,6 +5,17 @@
 @section('content')
     <h1 class="my-4 text-primary">Book Appointment</h1>
 
+    @if ($errors->has('time') || $errors->has('type'))
+        <div class="alert alert-danger">
+            @if ($errors->has('time'))
+                {{ $errors->first('time') }}
+            @endif
+            @if ($errors->has('type'))
+                {{ $errors->first('type') }}
+            @endif
+        </div>
+    @endif
+
     <a href="{{ route('patients.appointments.index') }}" class="btn btn-primary mb-3" role="button"><i
             class="bi bi-caret-left me-1"></i>Back</a>
 
@@ -21,20 +32,7 @@
 
                         <div class="mb-3">
                             <label for="time" class="form-label">Choose a time slot:</label>
-                            <select class="form-select" name="time" id="time">
-                                <option selected disabled>Select a time slot</option>
-                                @foreach ($availableTimeSlots as $scheduleId => $slots)
-                                    @foreach ($slots as $slot)
-                                        @if (!isBooked($scheduleId, $slot))
-                                            <option value="{{ $slot }}">{{ date('h:i A', strtotime($slot)) }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $slot }}" disabled>
-                                                {{ date('h:i A', strtotime($slot)) }} (Booked)</option>
-                                        @endif
-                                    @endforeach
-                                @endforeach
-                            </select>
+                            <input type="date" name="time" class="form-control" hidden>
                         </div>
 
                         <div class="mb-3">
@@ -89,3 +87,16 @@
 
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            let setTimeConfig = {
+                enableTime: true,
+                inline: true,
+                minDate: "today"
+            }
+            $('input[type="date"]').flatpickr(setTimeConfig)
+        });
+    </script>
+@endpush

@@ -12,11 +12,6 @@ class Schedule extends Model
 
     protected $guarded = [];
 
-    public function getFormattedDateAttribute()
-    {
-        return Carbon::parse($this->attributes['date'])->format('M d, Y');
-    }
-
     public function getFormattedStartTimeAttribute()
     {
         return date('h:i A', strtotime($this->attributes['start_time']));

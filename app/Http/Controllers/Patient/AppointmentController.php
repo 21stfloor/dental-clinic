@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Validator;
 
 class AppointmentController extends Controller
 {
@@ -47,23 +48,32 @@ class AppointmentController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validatedData = $request->validate([
+        $scheduleId = $request['schedule_id'];
+
+        $validator = Validator::make($request->all(), [
             'schedule_id' => 'required|exists:schedules,id',
             'doctor_id' => 'required|exists:doctors,id',
             'title' => 'required|max:255',
-            'time' => 'required',
-            'type' => 'required|in:tooth-extraction,orthondontics,veeners,whitening-dental,filling',
+            'time' => 'required|unique:appointments,time,NULL,id,type,' . $request->input('type'),
+            'type' => 'required|in:tooth-extraction,orthodontics,veneers,whitening-dental,filling',
             'notes' => 'nullable|max:1000',
         ]);
 
+        if ($validator->fails()) {
+            $scheduleId;
+            return redirect("/patient/appointments/{$scheduleId}")
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         Appointment::create([
-            'schedule_id' => $validatedData['schedule_id'],
-            'doctor_id' => $validatedData['doctor_id'],
+            'schedule_id' => $request['schedule_id'],
+            'doctor_id' => $request['doctor_id'],
             'patient_id' => auth()->user()->patient->id,
-            'title' => $validatedData['title'],
-            'time' => $validatedData['time'],
-            'type' => $validatedData['type'],
-            'notes' => $validatedData['notes'],
+            'title' => $request['title'],
+            'time' => $request['time'],
+            'type' => $request['type'],
+            'notes' => $request['notes'],
             'status' => 'pending',
         ]);
 

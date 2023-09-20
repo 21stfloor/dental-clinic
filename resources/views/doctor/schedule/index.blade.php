@@ -284,7 +284,7 @@
             }
 
             $('input[type="date"]').flatpickr(config)
-            
+
             let startTimeConfig = {
                 enableTime: true,
                 noCalendar: true,
@@ -293,9 +293,9 @@
                 maxTime: "17:00",
                 inline: true,
             }
-            
+
             $('input[type="time"]').flatpickr(startTimeConfig)
-            
+
         });
     </script>
     <script>

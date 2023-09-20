@@ -21,6 +21,12 @@
                         <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></div>
                         Set Appointment
                     </a>
+                    @isset($schedule)
+                        <a class="nav-link" href="{{ route('patients.appointments.create', $schedule) }}">
+                            <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></i></div>
+                            Add Appointments
+                        </a>
+                    @endif
                 @endif
 
                 @if (Auth::user()->hasRole('admin'))

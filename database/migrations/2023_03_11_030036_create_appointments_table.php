@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
+            $table->unique(['time', 'type']);
         });
     }
 

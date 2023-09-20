@@ -51,8 +51,10 @@ class ScheduleController extends Controller
             return back()
                 ->withErrors(['day' => 'Invalid.'])
                 ->withInput();
+
+                return response()->json(['error.']);
         }
-        
+
         Auth::user()->doctor->schedules()->create([
             'day' => Carbon::parse($request['day'])->format('l'),
             'start_time' => $request['start_time'],
