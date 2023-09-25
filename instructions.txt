@@ -1,0 +1,27 @@
+[open xampp and start: mysql and apache]
+
+[run the ff command in the terminal, make sure to navigate in the root folder of your project
+the ff will only be needed to run once]
+
+
+composer install
+
+php artisan migrate
+
+php artisan db:seed DatabaseSeeder
+php artisan db:seed PermissionSeeder
+php artisan db:seed ServiceSeeder
+
+npm install
+
+
+
+
+
+
+
+[to start the backend:]
+php artisan serve
+
+[open another terminal run the ff to start the frontend:]
+npm run dev
