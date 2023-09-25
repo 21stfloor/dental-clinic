@@ -26,11 +26,6 @@
                     <form action="{{ route('patients.appointments.store') }}" method="POST" id="addAppointmentForm">
                         @csrf
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" id="title" class="form-control">
-                        </div>
-
-                        <div class="mb-3">
                             <label for="time" class="form-label">Choose a time slot:</label>
                             <input type="date" name="time" class="form-control" hidden>
                         </div>
@@ -38,7 +33,7 @@
                         <div class="mb-3">
                             <label for="type" class="form-label">Type</label>
                             <select class="form-select" aria-label="Default select example" name="type" id="type"
-                                form="addAppointmentForm">
+                                form="addAppointmentForm" required>
                                 <option selected>Select a service type</option>
                                 <option value="tooth-extraction">Tooth Extraction</option>
                                 <option value="orthondontics">Orthodontics</option>
@@ -54,35 +49,15 @@
                                 name="notes"></textarea>
                         </div>
 
-                        <input type="hidden" name="schedule_id" value="{{ $schedule->id }}">
-                        <input type="hidden" name="doctor_id" value="{{ $schedule->doctor_id }}">
+                        <input type="hidden" id="selectedDoctor" name="doctor_id">
+                        <input type="hidden" id="selectedSchedule" name="schedule_id">
                     </form>
                 </div>
             </div>
         </div>
 
-        <div class="col-4">
-            <div class="card">
-                <div class="card-body shadow">
-                    <div class="d-flex justify-content-center align-items-center mb-3">
-                        <img src="{{ $schedule->doctor->user->avatar }}" alt="avatar"
-                            class="img-fluid rounded-circle avatar">
-                    </div>
-                    <ul class="list-group list-group-flush mb-3">
-                        <li class="list-group-item">Name:
-                            Dr. {{ $schedule->doctor->first_name . ' ' . $schedule->doctor->last_name }}
-                        </li>
-                        <li class="list-group-item">Contact Number: {{ $schedule->doctor->contact_number }}</li>
-                        <li class="list-group-item">Email: {{ $schedule->doctor->email }}</li>
-                    </ul>
-
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary" form="addAppointmentForm"><i
-                                class="bi bi-bookmark me-1"></i>Book
-                            Appointment</a></button>
-                    </div>
-                </div>
-            </div>
+        <div id="doctorContainer" class="col-4">
+            
         </div>
 
     </div>
@@ -94,9 +69,86 @@
             let setTimeConfig = {
                 enableTime: true,
                 inline: true,
-                minDate: "today"
+                minDate: "today",
+                onChange: function(selectedDates, dateStr, instance) {
+                    
+                    $.ajax({
+                        type: "GET",
+                        url: "/api/doctors/schedule",
+                        data: { date: dateStr },
+                        
+                        success: function(response) {
+                            console.log(response);
+
+                            $("#doctorContainer").empty();
+                            // Handle the response here
+                            // For example, you can display the doctors in a div with id 'result'
+                            response.forEach(function(doctor) {
+                                let doctorLayout = getDoctorLayout(doctor);
+                                $('#doctorContainer').append(doctorLayout);
+                            });
+                            // $('#doctorContainer').html('<pre>' + JSON.stringify(response, null, 2) + '</pre>');
+                        },
+                        error: function(error) {
+                            console.error("AJAX error:", error);
+                        }
+                    });
+                }
             }
             $('input[type="date"]').flatpickr(setTimeConfig)
+        });
+
+        function getDoctorLayout(doctor){
+            return `<div class="row">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <img src="${doctor.avatar}" alt="avatar"
+                                class="img-fluid rounded-circle avatar"/>
+                        </div>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Name:
+                                Dr. ${doctor.first_name} ${doctor.last_name}
+                            </li>
+                            <li class="list-group-item">Contact Number: ${doctor.contact_number}</li>
+                            <li class="list-group-item">Email: ${doctor.email}</li>
+                        </ul>
+
+                        <div class="d-grid">
+                            <button type="button" data-schedule="${doctor.schedule_id}" data-doctor="${doctor.id}" class="btn btn-primary doctorSelect"><i
+                                    class="bi bi-bookmark me-1"></i>Select Doctor</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            $("#doctorContainer").on("click", ".doctorSelect", function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+
+                // Get the form associated with the clicked button
+                var form = $("#addAppointmentForm");//$(this).closest("form");
+                // Get the FormData object for the form
+                var formData = new FormData(form[0]);
+                // Get the form action URL
+                var actionUrl = form.attr("action");
+
+                // Your custom logic goes here
+                // For example, you can perform AJAX form submission or any other action
+                let doctorId = $(this).data('doctor');
+                $("#selectedDoctor").val(doctorId);
+                let scheduleId = $(this).data('schedule');
+                $("#selectedSchedule").val(scheduleId);
+                console.log(`doctor = ${doctorId}`);
+
+                form.submit();
+            });
+
         });
     </script>
 @endpush

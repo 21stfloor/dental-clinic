@@ -15,6 +15,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    @yield('style')
 </head>
 
 <body class="sb-nav-fixed">
@@ -33,6 +34,7 @@
     <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @stack('scripts')
+    @yield('scripts')
 </body>
 
 </html>

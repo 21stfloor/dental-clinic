@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
-            $table->string('title');
             $table->time('time');
             $table->string('type');
             $table->text('notes')->nullable();

@@ -19,14 +19,12 @@
                     <div class="sb-sidenav-menu-heading">Appointments</div>
                     <a class="nav-link" href="{{ route('patients.appointments.index') }}">
                         <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></div>
-                        Set Appointment
+                        My Appointments
                     </a>
-                    @isset($schedule)
-                        <a class="nav-link" href="{{ route('patients.appointments.create', $schedule) }}">
-                            <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></i></div>
-                            Add Appointments
-                        </a>
-                    @endif
+                    <a class="nav-link" href="{{ route('patients.appointments.create') }}">
+                        <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></i></div>
+                        New Appointment
+                    </a>
                 @endif
 
                 @if (Auth::user()->hasRole('admin'))

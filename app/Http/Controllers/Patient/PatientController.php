@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
 use App\Models\Patient;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Auth;
+
 
 class PatientController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        
         return response(view('patient.index'));
     }
 
