@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Patient;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
@@ -16,15 +17,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        Role::firstOrCreate(['guard_name' => 'web', 'name' => 'admin']);
-        Role::firstOrCreate(['guard_name' => 'web', 'name' => 'patient']);
-        Role::firstOrCreate(['guard_name' => 'web', 'name' => 'doctor']);
+        // create permissions
+        Permission::create(['name' => 'edit articles']);
+        Permission::create(['name' => 'delete articles']);
+        Permission::create(['name' => 'publish articles']);
+        Permission::create(['name' => 'unpublish articles']);
+        
+        $adminRole = Role::firstOrCreate(['guard_name' => 'web', 'name' => 'admin']);
+        $adminRole->givePermissionTo(Permission::all());
+
+        $patientRole = Role::firstOrCreate(['guard_name' => 'web', 'name' => 'patient']);
+        $patientRole->givePermissionTo('edit articles');
+        
+        $doctorRole = Role::firstOrCreate(['guard_name' => 'web', 'name' => 'doctor']);
+        $doctorRole->givePermissionTo(['publish articles', 'unpublish articles']);
+
         $adminUser = User::factory()->create([
             'username' => 'admin1',
             'email' => 'admin1@email.com'
