@@ -81,12 +81,18 @@
                             console.log(response);
 
                             $("#doctorContainer").empty();
-                            // Handle the response here
-                            // For example, you can display the doctors in a div with id 'result'
-                            response.forEach(function(doctor) {
-                                let doctorLayout = getDoctorLayout(doctor);
-                                $('#doctorContainer').append(doctorLayout);
-                            });
+
+                            if(response.length > 0){
+                                // Handle the response here
+                                // For example, you can display the doctors in a div with id 'result'
+                                response.forEach(function(doctor) {
+                                    let doctorLayout = getDoctorLayout(doctor);
+                                    $('#doctorContainer').append(doctorLayout);
+                                });
+                            }
+                            else{
+                                $("#doctorContainer").append(`<h1>There are no available dentist on the selected day.<br>Please select other day.</h1>`);
+                            }
                             // $('#doctorContainer').html('<pre>' + JSON.stringify(response, null, 2) + '</pre>');
                         },
                         error: function(error) {
