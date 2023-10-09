@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\Models\Appointment;
+use App\Models\Doctor;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -129,4 +131,30 @@ class ScheduleController extends Controller
 
         return redirect()->back()->with('success', 'Schedule has been marked as inactive.');
     }
+
+    public function calendar(Request $request)
+    {
+        // Get the currently authenticated doctor
+        $user = auth()->user();
+        $doctor = Doctor::where('user_id', $user->id)->first();
+
+        // Fetch upcoming appointments for the doctor
+        $upcomingAppointments = Appointment::where('doctor_id', $doctor->id)
+            ->where('date', '>=', now()) // Adjust the date comparison as needed
+            ->orderBy('date', 'asc') // You can order by appointment date
+            ->pluck('date')
+            ->toArray();
+
+        // Convert the DateTime objects to date strings
+        $upcomingAppointments = array_map(function ($appointment) {
+            return $appointment->format('Y-m-d'); // Adjust the date format as needed
+        }, $upcomingAppointments);
+
+        // Get unique date values
+        $uniqueUpcomingAppointments = array_unique($upcomingAppointments);
+
+        // Pass the data to the Blade view and return it
+        return response()->view('doctor.schedule.calendar', ['upcomingAppointments' => $uniqueUpcomingAppointments]);
+    }
+    
 }

@@ -14,10 +14,13 @@ class DoctorController extends Controller
 {
     public function index(): Response
     {
-        $pendingAppointments = Appointment::where('status', 'pending')->count();
-        $completedAppointments = Appointment::where('status', 'completed')->count();
-        $cancelledAppointments = Appointment::where('status', 'cancelled')->count();
-        return response(view('doctor.index', compact('pendingAppointments', 'completedAppointments', 'cancelledAppointments')));
+        $pendingAppointments = Appointment::where('status', 'Pending')->count();
+        $acceptedAppointments = Appointment::where('status', 'Accepted')->count();
+        $ongoingAppointments = Appointment::where('status', 'Ongoing')->count();
+        $doneAppointments = Appointment::where('status', 'Done')->count();
+        $cancelledAppointments = Appointment::where('status', 'Cancel')->count();
+        
+        return response(view('doctor.index', compact('pendingAppointments', 'acceptedAppointments', 'ongoingAppointments', 'doneAppointments', 'cancelledAppointments')));
     }
 
     public function profile(): Response

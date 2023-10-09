@@ -20,5 +20,5 @@ Route::prefix('doctor')->middleware(['auth', 'role:doctor'])->group(function () 
     Route::delete('/delete-record/{id}', [RecordController::class, 'deleteRecord'])->name('doctors.records.delete');
     Route::get('/appointments', [AppointmentController::class, 'doctorAppointments'])->name('patients.appointments.doctor');
     Route::put('/update-appointment-status/{id}', [AppointmentController::class, 'updateStatus'])->name('doctors.appointments.update');
-    
+    Route::get('/calendar', [ScheduleController::class, 'calendar'])->name('doctors.schedules.calendar');
 });
