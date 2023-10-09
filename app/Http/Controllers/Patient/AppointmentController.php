@@ -40,12 +40,40 @@ class AppointmentController extends Controller
         return response(view('patient.appointments.index'));
     }
 
+    public function upcoming(Request $request)
+    {
+        $dt = app('datatables');
+        $request = $dt->getRequest();
+        
+        if ($request->isXmlHttpRequest()) {
+            $user = auth()->user();
+            $patient = Patient::where('user_id', $user->id)->first();
+            
+            // Get only upcoming appointments (where the appointment date is in the future)
+            $now = now();
+            $appointments = Appointment::where('patient_id', $patient->id)
+                ->join('doctors', 'appointments.doctor_id', '=', 'doctors.id')
+                ->where('appointments.time', '>=', $now)
+                ->select('appointments.*', DB::raw("CONCAT('Dr. ', doctors.first_name, ' ', doctors.last_name) as doctor"))
+                ->get();
+
+            $result = DataTables::of($appointments)->toJson();
+
+            return $result;
+        }
+        
+        return response(view('patient.upcoming'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create(Schedule $schedule): Response
     {
-        return response(view('patient.appointments.create'));
+        // $serviceTypes = DB::table('services')->pluck(['title', 'availability']);
+        $serviceTypes = DB::table('services')->select(['title', 'availability'])->get();
+
+        return response(view('patient.appointments.create')->with('serviceTypes', $serviceTypes));
     }
 
     /**

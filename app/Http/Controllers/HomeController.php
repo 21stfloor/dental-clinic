@@ -30,7 +30,7 @@ class HomeController extends Controller
         if (Auth::user()->hasRole('admin')) {
             return redirect()->route('admins.dashboard');
         } elseif (Auth::user()->hasRole('patient')) {
-            return redirect()->route('patients.dashboard');
+            return redirect()->route('patients.appointments.upcoming');
         } elseif (Auth::user()->hasRole('doctor')) {
             return redirect()->route('doctors.dashboard');
         }

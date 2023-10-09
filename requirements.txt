@@ -28,3 +28,31 @@ maximum number of clients per day
 generate report per day of total clients
 
 keep records of clients
+
+
+PATIENT
+- Dashboard/Table-makikita yung oras na nakaisked
+- record ng patient na nagpagamot./ kasama picture ng ngipin. 
+- Cancellation of appointment.
+- Complete Service types. 
+DOCTOR
+- Dashboard/ Pending Appointments- paano maaksep.
+- Table/Calendar
+- Patient Record/ History
+- List ng patient na nagamot ng doctor.
+- Approving appointment function. 
+ADMIN
+- Dashboard / Table 
+- Pa explain po samen nung sa permission/ articles etc.
+
+
+PROBLEM
+- Doctor's name magkaiba
+- Complete services ng Dental Clinic sa Services page.
+
+
+- sms notif/ pa sabi po samen pano yon nagpa-fuction, status ng 
+- appointment ng patient. 
+- Pa explain din po sana samen yung buong process kase para dina
+  din po kami mangapa at mag ask kung mapoprovide nyo napo ng 
+  maayos yung process.

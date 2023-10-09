@@ -49,7 +49,11 @@ class DatabaseSeeder extends Seeder
         $doctorUser->assignRole('doctor');
 
         Doctor::factory()->create([
-            'user_id' => $doctorUser->id
+            'user_id' => $doctorUser->id,
+            'email' => 'doctor1@email.com',
+            'first_name' => $doctorUser->first_name,
+            'last_name' => $doctorUser->last_name,
+            'contact_number' => $doctorUser->contact_number
         ]);
 
         $patientUser = User::factory()->create([
@@ -61,6 +65,10 @@ class DatabaseSeeder extends Seeder
 
         Patient::factory()->create([
             'user_id' => $patientUser->id,
+            'email' => 'patien1@email.com',
+            'first_name' => $patientUser->first_name,
+            'last_name' => $patientUser->last_name,
+            'contact_number' => $patientUser->contact_number
         ]);
 
     }

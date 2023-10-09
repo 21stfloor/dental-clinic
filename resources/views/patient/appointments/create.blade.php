@@ -31,17 +31,17 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="type" class="form-label">Type</label>
-                            <select class="form-select" aria-label="Default select example" name="type" id="type"
-                                form="addAppointmentForm" required>
-                                <option selected>Select a service type</option>
-                                <option value="tooth-extraction">Tooth Extraction</option>
-                                <option value="orthondontics">Orthodontics</option>
-                                <option value="veeners">Veeners</option>
-                                <option value="whitening-dental">Whitening Dental</option>
-                                <option value="filling">Filling</option>
-                            </select>
-                        </div>
+                        <label for="type" class="form-label">Type</label>
+                        <select class="form-select" aria-label="Default select example" name="type" id="type" form="addAppointmentForm" required>
+                            <option selected>Select a service type</option>
+                            <?php $__currentLoopData = $serviceTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e(strtolower(str_replace(' ', '-', $service->title))); ?>" <?php echo e($service->availability == 0 ? 'disabled' : ''); ?>>
+                                    <?php echo e($service->title); ?>
+                                </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+
+                    </div>
 
                         <div class="mb-3">
                             <label for="floatingTextarea" class="form-label">Notes</label>

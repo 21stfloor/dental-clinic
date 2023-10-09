@@ -15,15 +15,23 @@
                         <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></div>
                         Set Schedule
                     </a>
+                    <a class="nav-link" href="{{ route('doctors.records.records') }}">
+                        <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
+                        History Records
+                    </a>
                 @elseif(Auth::user()->hasRole('patient'))
                     <div class="sb-sidenav-menu-heading">Appointments</div>
                     <a class="nav-link" href="{{ route('patients.appointments.index') }}">
-                        <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></div>
+                        <div class="sb-nav-link-icon"><i class="bi bi-journal-medical"></i></div>
                         My Appointments
                     </a>
                     <a class="nav-link" href="{{ route('patients.appointments.create') }}">
                         <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></i></div>
                         New Appointment
+                    </a>
+                    <a class="nav-link" href="{{ route('patients.records.myrecords') }}">
+                        <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
+                        History
                     </a>
                 @endif
 

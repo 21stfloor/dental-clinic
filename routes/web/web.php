@@ -36,7 +36,7 @@ Route::middleware(['auth', 'web', 'verified'])->group(function () {
     });
 
     Route::middleware(['role:patient'])->group(function () {
-        Route::get('/patient/dashboard', [PatientController::class, 'index'])->name('patients.dashboard');
+        Route::get('/patient/dashboard', [PatientController::class, 'index'])->name('patients.appointments.upcoming');
     });
 
     Route::middleware(['role:doctor'])->group(function () {

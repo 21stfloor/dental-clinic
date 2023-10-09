@@ -67,5 +67,29 @@ class ServiceSeeder extends Seeder
             'description' => "Removable partial dentures are dental prostheses designed to replace missing teeth when some natural teeth remain in the arch. They consist of artificial teeth attached to a metal or acrylic base and are secured in place with clasps or other attachments. Partial dentures improve both function and appearance.",
             'image' => 'services/service-removal-partial-denture.jpg'
         ]);
+
+        Service::create([
+            'title' => 'Preventive Dental Care',
+            'description' => "Prevent dental problems before they start with our comprehensive preventive dental care. Regular check-ups, cleanings, and dental education help maintain your oral health. We focus on early detection and tailored preventive measures to keep your smile healthy and beautiful.",
+            'image' => 'services/preventive-dental-care.jpg'
+        ]);
+
+        Service::create([
+            'title' => 'Cosmetic Dentistry',
+            'description' => "Enhance the appearance of your teeth and overall smile with our cosmetic dentistry options. From porcelain veneers and teeth bonding to smile makeovers, we offer personalized treatments to transform your smile and boost your self-confidence.",
+            'image' => 'services/cosmetic-dentistry.jpg'
+        ]);
+
+        Service::create([
+            'title' => 'Emergency Dentistry',
+            'description' => "Life is unpredictable, and dental emergencies can happen anytime. Our emergency dentistry services are here to provide immediate relief and expert care for issues like severe toothaches, broken teeth, or sudden injuries. We're here when you need us most.",
+            'image' => 'services/emergency-dentistry.jpg'
+        ]);
+
+        Service::create([
+            'title' => 'Tooth Whitening',
+            'description' => "Achieve a brighter, more radiant smile with our tooth whitening services. We use safe and effective methods to remove stains and discoloration, leaving your teeth several shades whiter. Enjoy a confident, dazzling smile.",
+            'image' => 'services/tooth-whitening.jpg'
+        ]);
     }
 }
