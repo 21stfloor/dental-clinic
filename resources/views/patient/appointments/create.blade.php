@@ -27,13 +27,13 @@
                         @csrf
                         <div class="mb-3">
                             <label for="time" class="form-label">Choose a time slot:</label>
-                            <input type="date" name="time" class="form-control" hidden>
+                            <input type="date" name="date" class="form-control" hidden>
                         </div>
 
                         <div class="mb-3">
                         <label for="type" class="form-label">Type</label>
                         <select class="form-select" aria-label="Default select example" name="type" id="type" form="addAppointmentForm" required>
-                            <option selected>Select a service type</option>
+                            <option value="" selected>Select a service type</option>
                             <?php $__currentLoopData = $serviceTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e(strtolower(str_replace(' ', '-', $service->title))); ?>" <?php echo e($service->availability == 0 ? 'disabled' : ''); ?>>
                                     <?php echo e($service->title); ?>

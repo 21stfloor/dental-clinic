@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "spatie/laravel-permission": "^5.11",
+        "twilio/sdk": "^7.11",
         "yajra/laravel-datatables": "^10.0"
     },
     "require-dev": {

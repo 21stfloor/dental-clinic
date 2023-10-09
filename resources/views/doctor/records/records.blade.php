@@ -12,7 +12,7 @@
 @endpush
 
 @section('content')
-    <h1 class="mb-1 text-primary">Records</h1>
+    <h1 class="mb-1 text-primary">Patients History Records</h1>
     <br>
     @if ($errors->has('time') || $errors->has('type'))
         <div class="alert alert-danger">

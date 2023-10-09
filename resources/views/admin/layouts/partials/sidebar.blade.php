@@ -15,9 +15,13 @@
                         <div class="sb-nav-link-icon"><i class="bi bi-calendar-plus fs-5"></i></div>
                         Set Schedule
                     </a>
+                    <a class="nav-link" href="{{ route('patients.appointments.doctor') }}">
+                        <div class="sb-nav-link-icon"><i class="bi bi-journal-medical"></i></div>
+                        Patients Appointment
+                    </a>
                     <a class="nav-link" href="{{ route('doctors.records.records') }}">
                         <div class="sb-nav-link-icon"><i class="bi bi-clock-history"></i></div>
-                        History Records
+                        Patients History Records
                     </a>
                 @elseif(Auth::user()->hasRole('patient'))
                     <div class="sb-sidenav-menu-heading">Appointments</div>
@@ -75,10 +79,7 @@
                                 <div class="sb-nav-link-icon"><i class="bi bi-person-lines-fill fs-5"></i></div>
                                 Roles
                             </a>
-                            <a class="nav-link" href="{{ route('permissions.index') }}">
-                                <div class="sb-nav-link-icon"><i class="bi bi-person-fill-gear fs-5"></i></div>
-                                Permissions
-                            </a>
+                            
                         </nav>
                     </div>
                 @endif

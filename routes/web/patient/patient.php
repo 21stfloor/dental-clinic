@@ -12,5 +12,7 @@ Route::prefix('patient')->middleware(['auth', 'role:patient'])->group(function (
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('patients.appointments.index');
     Route::match(['get', 'post'], '/appointments/create', [AppointmentController::class, 'create'])->name('patients.appointments.create');
     Route::post('/appointments', [AppointmentController::class, 'store'])->name('patients.appointments.store');
-    Route::get('/myrecords', [RecordController::class, 'myrecords'])->name('patients.records.myrecords');    
+    Route::get('/myrecords', [RecordController::class, 'myrecords'])->name('patients.records.myrecords');
+    Route::put('/cancel-appointment/{id}', [AppointmentController::class, 'cancel'])->name('patients.appointments.cancel');
+    
 });

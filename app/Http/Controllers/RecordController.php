@@ -39,6 +39,7 @@ class RecordController extends Controller
         return response(view('patient.records.myrecords'));
     }
 
+
     public function records()
     {
         $dt = app('datatables');

@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SmsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'web', 'verified'])->group(function () {
 
     Route::middleware(['role:doctor'])->group(function () {
         Route::get('/doctor/dashboard', 'DoctorController@index')->name('doctors.dashboard');
+        Route::post('/send-sms', [SmsController::class, 'sendSms'])->name('send.sms');
     });
 });
 

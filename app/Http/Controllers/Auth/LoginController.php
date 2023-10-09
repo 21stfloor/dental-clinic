@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,6 +42,7 @@ class LoginController extends Controller
 
      
             if (Auth::attempt($fields)) {
+                $user->update(['last_login' => Carbon::now()]);
                 $request->session()->regenerate();
      
                 return redirect()->intended('dashboard');
