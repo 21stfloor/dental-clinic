@@ -32,7 +32,7 @@
                                 <div class="row">
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 px-3">
                         <button class="btn btn-primary btn-sm" form="profileForm" type="submit">Save Settings</button>
                         </div>
                         <form id="profileForm" method="POST" action="{{ route('doctors.update', ['doctor' => $doctorProfile]) }}">

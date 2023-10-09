@@ -241,10 +241,7 @@
                                                                                         <select
                                                                                             class="form-select @error('gender') is-invalid @enderror"
                                                                                             id="gender" name="gender"
-                                                                                            form="editDoctorForm{{ $doctor->id }}">
-                                                                                            <option selected disabled>Select
-                                                                                                Gender
-                                                                                            </option>
+                                                                                            form="editDoctorForm{{ $doctor->id }}">                                                                                            
                                                                                             <option value="male"
                                                                                                 {{ $doctor->gender == 'male' ? 'selected' : '' }}>
                                                                                                 Male
