@@ -21,7 +21,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/patients/create', [AdminPatientController::class, 'create'])->name('patients.create');
     Route::post('/patients', [AdminPatientController::class, 'store'])->name('patients.store');
     Route::get('/patients/{patient}/edit', [AdminPatientController::class, 'edit'])->name('patients.edit');
-    Route::put('/patients/{patient}/update', [AdminPatientController::class, 'update'])->name('patients.update');
+    
     Route::delete('/patients/{patient}/destroy', [AdminPatientController::class, 'destroy'])->name('patients.destroy');
 
     Route::get('/roles', [AdminRoleController::class, 'index'])->name('roles.index');
@@ -36,3 +36,5 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/permissions/{permission}/update', [AdminPermissionController::class, 'update'])->name('permissions.update');
     Route::delete('/permissions/{permission}/destroy', [AdminPermissionController::class, 'destroy'])->name('permissions.destroy');
 });
+
+Route::put('/patients/{patient}/update', [AdminPatientController::class, 'update'])->name('patients.update');

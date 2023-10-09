@@ -150,7 +150,11 @@ class AppointmentController extends Controller
      
             return $result;
         }
-        return response(view('doctor.appointments.doctor'));
+
+        $doctor_name = $doctor->first_name .' '. $doctor->last_name;
+        return response(view('doctor.appointments.doctor', ['doctor' => $doctor_name]));
+
+        // return response(view('doctor.appointments.doctor'));
     }
 
     public function updateStatus(Request $request, $id)

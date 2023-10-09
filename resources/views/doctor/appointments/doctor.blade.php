@@ -31,6 +31,7 @@
     </div>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <input name="doctor" value="{{$doctor}}" hidden>
 @endsection
 
 @push('scripts')
@@ -118,10 +119,14 @@
                                 var recipient = row.find('td:eq(4)').text();
 
                                 var patient_name = row.find('td:eq(3)').text();
-                                var doctor = row.find('td:eq(3)').text();
+                                // var doctor = row.find('td:eq(3)').text();
+                                var doctor = $('input[name="doctor"]').val();
                                 var date = row.find('td:eq(1)').text();
-                                var message = `Good day ${patient_name},\nThis is Smile Pro HQ\nWe would like to update you on the status of your appointment on:${date},
-                                Dr.${doctor} updated the status to ${newStatus}.`;
+                                var note = row.find('td:eq(5)').text();
+
+                                var message = `Good day ${patient_name},\nThis is Smile Pro HQ\nWe would like to update you on the status of your appointment on:${date},\n
+                                Dr.${doctor} updated the status to ${newStatus}.\n
+                                Doctor's note:${note}`;
 
                                 console.log(recipient);
                                 console.log(message);

@@ -18,7 +18,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Time</th>
+                    <th>Date/Time</th>
                     <th>Type</th>
                     <th>Doctor</th>
                 </tr>
@@ -41,7 +41,7 @@
                 ajax: "{{ route('patients.appointments.upcoming') }}",
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'time', name: 'time' },
+                    { data: 'date', name: 'date' },
                     { data: 'type', name: 'type' },
                     { data: 'doctor', name: 'doctor' }
                 ]

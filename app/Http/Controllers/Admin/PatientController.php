@@ -146,7 +146,7 @@ class PatientController extends Controller
         $patient->update($patientData);
 
         if ($patient->wasChanged() || $patient->user->wasChanged()) {
-            return redirect()->route('patients.index')->with('success', 'Patient updated successfully.');
+            return redirect()->route('patients.profile')->with('success', 'Patient updated successfully.');
         } else {
             return back()->with('info', 'Nothing has changed.');
         }
