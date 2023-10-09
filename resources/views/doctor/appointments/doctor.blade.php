@@ -41,15 +41,31 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js" integrity="sha512-oVbWSv2O4y1UzvExJMHaHcaib4wsBMS5tEP3/YkMP6GmkwRJAa79Jwsv+Y/w7w2Vb/98/Xhvck10LyJweB8Jsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+
     <script>
         $(document).ready(function() {
+            moment.tz.setDefault('Asia/Manila'); // Change 'America/New_York' to your desired timezone
+
             $('#appointments-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('patients.appointments.doctor') }}",
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'date', name: 'date' },
+                    {
+                        data: 'date',
+                        name: 'date',
+                        render: function(data, type, row) {
+                            // Format the date and time using moment.js with the specified timezone
+                            if (type === 'display' || type === 'filter') {
+                                return moment.tz(data, 'YYYY-MM-DD HH:mm:ss', 'Asia/Manila').format('YYYY-MM-DD hh:mm A');
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
                     { data: 'type', name: 'type' },
                     { data: 'patient', name: 'patient' },
                     { data: 'contact_number', name: 'contact_number' },

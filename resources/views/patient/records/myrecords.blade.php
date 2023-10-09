@@ -34,15 +34,24 @@
     <!-- Include DataTables JS -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    
+
     <script>
         $(document).ready(function() {
             $('#history-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('patients.records.records') }}",
+                ajax: "{{ route('patients.records.myrecords') }}",
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'image', name: 'image' },
+                    {
+                        data: 'image', // Assuming 'image' is the column containing image URLs
+                        name: 'image',
+                        render: function(data, type, row) {
+                            // Display the image as a thumbnail with the corrected storage path
+                            return '<img src="/storage/' + data + '" alt="Image" width="50" height="50">';
+                        }
+                    },
                     { data: 'type', name: 'type' },
                     { data: 'doctor', name: 'doctor' },
                     { data: 'date_completed', name: 'date_completed' }

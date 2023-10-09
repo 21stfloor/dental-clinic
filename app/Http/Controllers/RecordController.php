@@ -29,8 +29,13 @@ class RecordController extends Controller
             
             $records = Record::where('patient_id', $patient->id)
                 ->join('doctors', 'records.doctor_id', '=', 'doctors.id')
-                ->select('appointments.*', DB::raw("CONCAT('Dr. ', doctors.first_name, ' ', doctors.last_name) as doctor"))
+                ->select('doctors.first_name', 'doctors.last_name', 'records.*')
                 ->get();
+
+            // Create a new "doctor" attribute by concatenating first and last names
+            $records->each(function ($record) {
+                $record->doctor = 'Dr. ' . $record->first_name . ' ' . $record->last_name;
+            });
 
             $result = DataTables::of($records)->toJson();
 

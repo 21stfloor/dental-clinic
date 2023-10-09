@@ -14,11 +14,40 @@ class DoctorController extends Controller
 {
     public function index(): Response
     {
-        $pendingAppointments = Appointment::where('status', 'Pending')->count();
-        $acceptedAppointments = Appointment::where('status', 'Accepted')->count();
-        $ongoingAppointments = Appointment::where('status', 'Ongoing')->count();
-        $doneAppointments = Appointment::where('status', 'Done')->count();
-        $cancelledAppointments = Appointment::where('status', 'Cancel')->count();
+        $doctor = Auth::user();
+
+        if ($doctor) {
+            $doctorId = $doctor->id;
+
+            // Count appointments for each status for the authenticated doctor
+            $pendingAppointments = Appointment::where('status', 'Pending')
+                ->where('doctor_id', $doctorId)
+                ->count();
+
+            $acceptedAppointments = Appointment::where('status', 'Accepted')
+                ->where('doctor_id', $doctorId)
+                ->count();
+
+            $ongoingAppointments = Appointment::where('status', 'Ongoing')
+                ->where('doctor_id', $doctorId)
+                ->count();
+
+            $doneAppointments = Appointment::where('status', 'Done')
+                ->where('doctor_id', $doctorId)
+                ->count();
+
+            $cancelledAppointments = Appointment::where('status', 'Cancel')
+                ->where('doctor_id', $doctorId)
+                ->count();
+        } else {
+            // Handle the case where the user is not authenticated as a doctor
+            // For example, you can set these counts to 0 or handle the error as needed.
+            $pendingAppointments = 0;
+            $acceptedAppointments = 0;
+            $ongoingAppointments = 0;
+            $doneAppointments = 0;
+            $cancelledAppointments = 0;
+        }
         
         return response(view('doctor.index', compact('pendingAppointments', 'acceptedAppointments', 'ongoingAppointments', 'doneAppointments', 'cancelledAppointments')));
     }

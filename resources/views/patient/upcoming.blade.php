@@ -33,15 +33,31 @@
     <!-- Include DataTables JS -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    
     <script>
         $(document).ready(function() {
+            moment.tz.setDefault('Asia/Manila'); // Change 'America/New_York' to your desired timezone
+
             $('#upcoming-appointments-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('patients.appointments.upcoming') }}",
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'date', name: 'date' },
+                    {
+                        data: 'date',
+                        name: 'date',
+                        render: function(data, type, row) {
+                            // Format the date and time using moment.js with the specified timezone
+                            if (type === 'display' || type === 'filter') {
+                                return moment.tz(data, 'YYYY-MM-DD HH:mm:ss', 'Asia/Manila').format('YYYY-MM-DD hh:mm A');
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
                     { data: 'type', name: 'type' },
                     { data: 'doctor', name: 'doctor' }
                 ]
