@@ -15,9 +15,10 @@ class DoctorController extends Controller
     public function index(): Response
     {
         $doctor = Auth::user();
+        $doctorProfile = Doctor::where('user_id', $doctor->id)->first();
 
-        if ($doctor) {
-            $doctorId = $doctor->id;
+        if ($doctorProfile) {
+            $doctorId = $doctorProfile->id;
 
             // Count appointments for each status for the authenticated doctor
             $pendingAppointments = Appointment::where('status', 'Pending')

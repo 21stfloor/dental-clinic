@@ -115,20 +115,6 @@
                                         for="contact_number"><strong>Phone Number</strong></label>
                                         <input id="contact_number" form="profileForm"  class="form-control" type="tel" value="{{ $patientProfile->contact_number }}" placeholder="+63"
                                         name="contact_number" required/></div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3"><label class="form-label"
-                                                for="city"><strong>City</strong></label><input id="city" form="profileForm" 
-                                                class="form-control" type="text" placeholder="Carmona"
-                                                name="city" /></div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3"><label class="form-label"
-                                                for="country"><strong>Country</strong></label><input id="country" form="profileForm" 
-                                                class="form-control" type="text" placeholder="Philippines" name="country" />
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary btn-sm" form="profileForm" type="submit">Save Settings</button>
                                 </div>

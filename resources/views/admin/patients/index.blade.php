@@ -16,9 +16,7 @@
 
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addPatientModal">
-                <i class="bi bi-person-plus me-1"></i> Add Patient</a>
-            </button>
+            
             <div class="card mb-4">
                 <div class="card-body shadow">
                     <div class="table-responsive">

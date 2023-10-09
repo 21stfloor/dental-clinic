@@ -14,6 +14,17 @@
         </div>
     @endif
 
+    @if ($errors->has('time') || $errors->has('type'))
+        <div class="alert alert-danger">
+            @if ($errors->has('time'))
+                {{ $errors->first('time') }}
+            @endif
+            @if ($errors->has('type'))
+                {{ $errors->first('type') }}
+            @endif
+        </div>
+    @endif
+
     <div class="row">
         <div class="col">
             <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addDoctorModal">
@@ -37,7 +48,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <!-- <tfoot>
                                 <tr>
                                     <th>ID</th>
                                     <th>Avatar</th>
@@ -50,7 +61,7 @@
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
-                            </tfoot>
+                            </tfoot> -->
                             <tbody>
                                 @foreach ($doctors as $doctor)
                                     <tr>
@@ -107,8 +118,9 @@
                                                                             @endif
                                                                         </div>
 
+                                                                        
                                                                         <form
-                                                                            action="{{ route('doctors.update', $doctor) }}"
+                                                                            action="{{ route('doctors.admin.update', ['doctor' => $doctor]) }}"
                                                                             method="POST" enctype="multipart/form-data"
                                                                             id="editDoctorForm{{ $doctor->id }}">
                                                                             @csrf
@@ -404,7 +416,7 @@
 
                                     <input id="first_name" type="text"
                                         class="form-control @error('first_name') is-invalid @enderror" name="first_name"
-                                        value="{{ old('first_name') }}">
+                                        value="{{ old('first_name') }}" required>
 
                                     @error('first_name')
                                         <span class="invalid-feedback" role="alert">
@@ -420,7 +432,7 @@
 
                                     <input id="last_name" type="text"
                                         class="form-control @error('last_name') is-invalid @enderror" name="last_name"
-                                        value="{{ old('last_name') }}">
+                                        value="{{ old('last_name') }}" required>
 
                                     @error('last_name')
                                         <span class="invalid-feedback" role="alert">
@@ -436,7 +448,7 @@
 
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}">
+                                        value="{{ old('email') }}" required>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -452,7 +464,7 @@
 
                                     <input id="contact_number" type="text"
                                         class="form-control @error('contact_number') is-invalid @enderror"
-                                        name="contact_number" value="{{ old('contact_number') }}">
+                                        name="contact_number" value="{{ old('contact_number') }}" required>
 
                                     @error('contact_number')
                                         <span class="invalid-feedback" role="alert">
@@ -466,7 +478,7 @@
                                 <div class="mb-3">
                                     <label for="birthday" class="form-label">{{ __('Birthday') }}</label>
                                     <input type="date" class="form-control @error('birthday') is-invalid @enderror"
-                                        id="birthday" name="birthday" value="{{ old('birthday') }}">
+                                        id="birthday" name="birthday" value="{{ old('birthday') }}" required>
 
                                     @error('birthday')
                                         <span class="invalid-feedback" role="alert">
@@ -481,7 +493,7 @@
                                     <label for="gender" class="form-label">{{ __('Gender') }}</label>
 
                                     <select class="form-select @error('gender') is-invalid @enderror" id="gender"
-                                        name="gender" form="addDoctorForm">
+                                        name="gender" form="addDoctorForm" required>
                                         <option selected disabled>Select Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -520,7 +532,7 @@
 
                                     <input id="username" type="text"
                                         class="form-control @error('username') is-invalid @enderror" name="username"
-                                        value="{{ old('username') }}">
+                                        value="{{ old('username') }}" required>
 
                                     @error('username')
                                         <span class="invalid-feedback" role="alert">
@@ -535,7 +547,7 @@
                                     <label for="password" class="form-label">{{ __('Password') }}</label>
 
                                     <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password">
+                                        class="form-control @error('password') is-invalid @enderror" name="password" required>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -550,7 +562,7 @@
                                     <label for="confirm_password" class="form-label">{{ __('Confirm Password') }}</label>
 
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation">
+                                        name="password_confirmation" required>
                                 </div>
                             </div>
                         </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -38,7 +39,30 @@ class DoctorController extends Controller
      */
     public function store(Request $request, User $user, Doctor $doctor): RedirectResponse
     {
-        $validatedData = $request->validate([
+
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'contact_number' => 'required|string|regex:/^[0-9]+$/|max:11',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'birthday' => 'required|date_format:Y-m-d',
+            'gender' => 'required|in:male,female,nonbinary,transgender',
+            'address' => 'required',
+        ]);
+       
+
+        if ($validator->fails()) {
+            
+            return
+                // redirect()->route('patients.appointments.create') 
+                redirect("/doctors")
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -95,6 +119,40 @@ class DoctorController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Doctor $doctor): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            
+            'contact_number' => 'required|string|max:20',            
+            'address' => 'required',
+            'avatar' => 'file',
+        ]);
+
+        $userData = [];
+
+        // Check if a new avatar was uploaded
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $avatarPath = $avatar->store('avatars', 'public');
+            $userData['avatar'] = $avatarPath;
+        }
+
+        $doctor->user->update($userData);
+
+        $doctorData = [
+            'contact_number' => $validatedData['contact_number'],
+            'address' => $validatedData['address'],
+        ];
+
+        $doctor->update($doctorData);
+
+        if ($doctor->wasChanged() || $doctor->user->wasChanged()) {
+            return redirect()->route('doctors.profile')->with('success', 'Doctor updated successfully.');
+        } else {
+            return back()->with('info', 'Nothing has changed.');
+        }
+    }
+
+    public function adminUpdate(Request $request, Doctor $doctor): RedirectResponse
     {
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -154,7 +212,6 @@ class DoctorController extends Controller
             return back()->with('info', 'Nothing has changed.');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      */

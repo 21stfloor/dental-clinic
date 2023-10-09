@@ -5,7 +5,7 @@
 @section('content')
     <h1 class="mt-4 text-primary">Profile</h1>
     <div class="row mb-3">
-        <div class="col-lg-4">
+        <div class="col-md-4">
             <div class="card mb-3">
                 <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
                         src="{{ asset('images/logo.png') }}" width="160" height="160" />
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col">
             <div class="row mb-3 d-none">
                 <div class="col">
                     <div class="card text-white bg-primary shadow">
